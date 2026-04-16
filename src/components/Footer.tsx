@@ -146,7 +146,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-[#C8A96E]/10 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[#F5F0E8]/25 text-xs">
-            © 2024 La Sarentina. Todos los derechos reservados.
+            © 2026 La Sarentina. Todos los derechos reservados.
           </p>
           <p className="text-[#F5F0E8]/25 text-xs flex items-center gap-1">
             Hecho con{" "}

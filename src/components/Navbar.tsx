@@ -24,6 +24,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (state.items.length > prevCartCount.current) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setCartBounce(true);
       setTimeout(() => setCartBounce(false), 600);
     }
@@ -134,7 +135,9 @@ export default function Navbar() {
               className="relative p-2 text-[#F5F0E8]/80 hover:text-[#C8A96E] transition-colors"
               aria-label="Carrito de compras"
             >
-              <ShoppingCart className={`w-5 h-5 ${cartBounce ? "animate-cart-bounce" : ""}`} />
+              <ShoppingCart
+                className={`w-5 h-5 ${cartBounce ? "animate-cart-bounce" : ""}`}
+              />
               {state.items.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#C8A96E] text-[#1C1008] text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                   {state.items.length}
@@ -169,7 +172,9 @@ export default function Navbar() {
               className="relative p-2 text-[#F5F0E8]/80 hover:text-[#C8A96E] transition-colors"
               aria-label="Carrito"
             >
-              <ShoppingCart className={`w-5 h-5 ${cartBounce ? "animate-cart-bounce" : ""}`} />
+              <ShoppingCart
+                className={`w-5 h-5 ${cartBounce ? "animate-cart-bounce" : ""}`}
+              />
               {state.items.length > 0 && (
                 <span className="absolute -top-1 -right-1 bg-[#C8A96E] text-[#1C1008] text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
                   {state.items.length}
@@ -182,7 +187,11 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Menú"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>

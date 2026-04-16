@@ -8,6 +8,7 @@ import {
   Leaf,
   Accessibility,
 } from "lucide-react";
+import PhotoReel, { type PhotoReelSlide } from "@/components/PhotoReel";
 
 const testimonials = [
   {
@@ -27,6 +28,26 @@ const testimonials = [
     role: "Cusqueña, abogada",
     stars: 5,
     text: "El equipo es increíblemente amable y el ambiente es súper acogedor. Es mi parada obligatoria cada mañana antes de ir al trabajo.",
+  },
+];
+
+const atmosphereSlides: PhotoReelSlide[] = [
+  {
+    background: "linear-gradient(135deg, #6B3A2A 0%, #3D1F0D 100%)",
+    label: "Interior acogedor",
+    description:
+      "Interiorismo cálido inspirado en la arquitectura inca y colonial.",
+  },
+  {
+    background: "linear-gradient(135deg, #3D1F0D 0%, #C8A96E 100%)",
+    label: "Barra de café",
+    description:
+      "Café de altura preparado con granos seleccionados del Cusco.",
+  },
+  {
+    background: "linear-gradient(135deg, #C8A96E 0%, #6B3A2A 100%)",
+    label: "Patio andino",
+    description: "Jardín tranquilo para disfrutar al aire libre de los Andes.",
   },
 ];
 
@@ -104,35 +125,12 @@ export default function Atmosphere() {
           ))}
         </div>
 
-        {/* Galería decorativa */}
-        <div className="grid grid-cols-3 gap-4 mb-20">
-          {[
-            {
-              bg: "linear-gradient(135deg, #6B3A2A, #3D1F0D)",
-              label: "Interior acogedor",
-            },
-            {
-              bg: "linear-gradient(135deg, #3D1F0D, #C8A96E)",
-              label: "Barra de café",
-            },
-            {
-              bg: "linear-gradient(135deg, #C8A96E, #6B3A2A)",
-              label: "Patio andino",
-            },
-          ].map((img, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl overflow-hidden border border-[#C8A96E]/10 ${i === 1 ? "row-span-1 aspect-square" : "aspect-[3/4]"}`}
-              style={{ background: img.bg }}
-            >
-              <div className="w-full h-full flex items-end p-4">
-                <span className="text-white/60 text-xs font-medium tracking-wide">
-                  {img.label}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Galería — reel de fotos */}
+        <PhotoReel
+          slides={atmosphereSlides}
+          intervalMs={5000}
+          className="mb-20 border border-[#C8A96E]/10"
+        />
 
         {/* Testimonios */}
         <div className="mb-8">

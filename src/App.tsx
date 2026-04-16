@@ -16,8 +16,8 @@ function App() {
       <CartProvider>
         <Navbar />
         <Hero />
-        <About />
         <Menu />
+        <About />
         <Atmosphere />
         <Contact />
         <Footer />

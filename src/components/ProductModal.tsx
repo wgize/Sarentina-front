@@ -7,6 +7,11 @@ interface ProductModalProps {
   item: MenuItem;
   isOpen: boolean;
   onClose: () => void;
+  /** Si se provee, el modal opera en modo edición y usa UPDATE_ITEM al confirmar */
+  cartItemId?: string;
+  initialQuantity?: number;
+  initialSize?: string;
+  initialCustomizations?: string[];
 }
 
 const sizes = ["Pequeño", "Mediano", "Grande"];
@@ -16,30 +21,42 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   item,
   isOpen,
   onClose,
+  cartItemId,
+  initialQuantity,
+  initialSize,
+  initialCustomizations,
 }) => {
   const { dispatch } = useCart();
-  const [quantity, setQuantity] = useState(1);
-  const [selectedSize, setSelectedSize] = useState(sizes[1]);
-  const [selectedCustomizations, setSelectedCustomizations] = useState<string[]>([]);
+  const isEditMode = Boolean(cartItemId);
+  const [quantity, setQuantity] = useState(initialQuantity ?? 1);
+  const [selectedSize, setSelectedSize] = useState(initialSize ?? sizes[1]);
+  const [selectedCustomizations, setSelectedCustomizations] = useState<string[]>(initialCustomizations ?? []);
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
-    dispatch({
-      type: "ADD_ITEM",
-      payload: {
-        ...item,
-        quantity,
-        size: selectedSize,
-        customizations: selectedCustomizations,
-      },
-    });
+    if (isEditMode && cartItemId) {
+      dispatch({
+        type: "UPDATE_ITEM",
+        payload: {
+          id: cartItemId,
+          updates: { quantity, size: selectedSize, customizations: selectedCustomizations },
+        },
+      });
+    } else {
+      dispatch({
+        type: "ADD_ITEM",
+        payload: {
+          ...item,
+          quantity,
+          size: selectedSize,
+          customizations: selectedCustomizations,
+        },
+      });
+    }
     setAdded(true);
     setTimeout(() => {
       setAdded(false);
       onClose();
-      setQuantity(1);
-      setSelectedSize(sizes[1]);
-      setSelectedCustomizations([]);
     }, 900);
   };
 
@@ -175,8 +192,10 @@ export const ProductModal: React.FC<ProductModalProps> = ({
             {added ? (
               <>
                 <Check className="w-4 h-4" />
-                ¡Agregado!
+                {isEditMode ? "¡Actualizado!" : "¡Agregado!"}
               </>
+            ) : isEditMode ? (
+              <>Actualizar pedido</>
             ) : (
               <>Agregar al Carrito — {item.price}</>
             )}

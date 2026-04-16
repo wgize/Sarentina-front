@@ -3,6 +3,7 @@ import { Coffee, Cake, Sandwich, Leaf, Search, X } from "lucide-react";
 import type { ElementType } from "react";
 import { cn } from "@/lib/utils";
 import { ProductModal } from "./ProductModal";
+import ProductCarousel from "@/components/ProductCarousel";
 import type { MenuItem, Category } from "@/types/cart";
 import { useSearch } from "@/contexts/SearchContext";
 
@@ -178,6 +179,16 @@ const menuItems: Record<Category, MenuItem[]> = {
   ],
 };
 
+/** Fotos de los productos más vendidos para el carrusel */
+const featuredImages = [
+  { src: "https://picsum.photos/1200/400?random=1",  alt: "Espresso Andino" },
+  { src: "https://picsum.photos/1200/400?random=13", alt: "Torta de Quinoa" },
+  { src: "https://picsum.photos/1200/400?random=7",  alt: "Mate de Coca Premium" },
+  { src: "https://picsum.photos/1200/400?random=19", alt: "Sándwich Andino" },
+  { src: "https://picsum.photos/1200/400?random=6",  alt: "Café Inca" },
+  { src: "https://picsum.photos/1200/400?random=14", alt: "Cheesecake de Maracuyá" },
+];
+
 const tagColors: Record<string, string> = {
   Favorito: "bg-[#C8A96E]/20 text-[#8B6914]",
   Nuevo: "bg-green-100 text-green-700",
@@ -229,6 +240,9 @@ export default function Menu() {
             es una celebración de nuestra tierra.
           </p>
         </div>
+
+        {/* Carrusel de productos destacados */}
+        <ProductCarousel images={featuredImages} className="mb-14" />
 
         {/* Tabs o resultado de búsqueda */}
         {isSearching ? (

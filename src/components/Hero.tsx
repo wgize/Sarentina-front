@@ -1,4 +1,4 @@
-import { ChevronDown, MapPin, Clock } from 'lucide-react'
+import { ChevronDown, MapPin, Clock } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -6,7 +6,8 @@ export default function Hero() {
       id="inicio"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        background: 'linear-gradient(160deg, #1C1008 0%, #3D1F0D 40%, #6B3A2A 100%)',
+        background:
+          "linear-gradient(160deg, #1C1008 0%, #3D1F0D 40%, #6B3A2A 100%)",
       }}
     >
       {/* Textura de fondo decorativa */}
@@ -17,7 +18,7 @@ export default function Hero() {
             backgroundImage: `radial-gradient(circle at 20% 50%, #C8A96E 1px, transparent 1px),
                               radial-gradient(circle at 80% 20%, #C8A96E 1px, transparent 1px),
                               radial-gradient(circle at 60% 80%, #C8A96E 1px, transparent 1px)`,
-            backgroundSize: '60px 60px, 40px 40px, 80px 80px',
+            backgroundSize: "60px 60px, 40px 40px, 80px 80px",
           }}
         />
       </div>
@@ -30,18 +31,10 @@ export default function Hero() {
       <div className="absolute left-[-15%] bottom-[-10%] w-[500px] h-[500px] rounded-full bg-[#6B3A2A]/30 border border-[#C8A96E]/10" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C8A96E]/10 border border-[#C8A96E]/30 mb-8 animate-fade-in-up">
-          <MapPin className="w-4 h-4 text-[#C8A96E]" />
-          <span className="text-[#C8A96E] text-sm font-medium tracking-widest uppercase">
-            Cusco, Perú
-          </span>
-        </div>
-
         {/* Título principal */}
         <h1
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-[#F5F0E8] leading-tight mb-4 animate-fade-in-up delay-100"
-          style={{ textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}
+          style={{ textShadow: "0 4px 20px rgba(0,0,0,0.3)" }}
         >
           La
           <br />
@@ -62,8 +55,8 @@ export default function Hero() {
 
         {/* Descripción */}
         <p className="max-w-2xl mx-auto text-[#F5F0E8]/60 text-base sm:text-lg leading-relaxed mb-10 animate-fade-in-up delay-400">
-          En el corazón del Cusco, donde el aroma del café se mezcla con el espíritu andino.
-          Una experiencia única de sabor, cultura y tradición.
+          En el corazón del Cusco, donde el aroma del café se mezcla con el
+          espíritu andino. Una experiencia única de sabor, cultura y tradición.
         </p>
 
         {/* Botones */}
@@ -105,5 +98,5 @@ export default function Hero() {
         <ChevronDown className="w-7 h-7" />
       </a>
     </section>
-  )
+  );
 }
